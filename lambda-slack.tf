@@ -86,7 +86,6 @@ resource "aws_lambda_permission" "with_sns" {
   source_arn    = "${aws_sns_topic.default.arn}"
 }
 
-
 resource "aws_sns_topic_subscription" "lambda_subscription" {
   count = "${var.slack_endpoint == "" ? 0 : 1}"
 
