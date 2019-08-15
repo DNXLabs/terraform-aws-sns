@@ -10,3 +10,9 @@ variable "slack_endpoint" {
 variable "topic_name" {
   description = "Topic name"
 }
+
+variable "account_ids" {
+  type = "list"
+  default = []
+  description = "List of accounts to allow publishing to SNS"
+}
