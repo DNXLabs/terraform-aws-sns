@@ -1,6 +1,6 @@
-variable "sns_subscribe_list" {
-  description = "email to send notifications"
-}
+# variable "sns_subscribe_list" {
+#   description = "email to send notifications"
+# }
 
 variable "slack_endpoint" {
   default = ""
