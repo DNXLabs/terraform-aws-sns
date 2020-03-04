@@ -12,7 +12,7 @@ variable "topic_name" {
 }
 
 variable "account_ids" {
-  type = "list"
+  type = list(string)
   default = []
   description = "List of accounts to allow publishing to SNS"
 }
