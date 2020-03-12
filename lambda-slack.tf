@@ -24,7 +24,7 @@ resource "aws_iam_policy" "default" {
   count = var.slack_endpoint == "" ? 0 : 1
 
   name_prefix = "cloudwatchfull-lambda"
-  path = "/"
+  path        = "/"
   description = "IAM policy for a lambda function"
 
   policy = <<EOF
@@ -89,12 +89,10 @@ resource "aws_lambda_permission" "with_sns" {
 resource "aws_sns_topic_subscription" "lambda_subscription" {
   count = var.slack_endpoint == "" ? 0 : 1
 
-  #topic_arn     = data.aws_sns_topic.health_topic_client.arn
-  topic_arn     = aws_sns_topic.default.arn
-  protocol      = "lambda"
-  #endpoint      = data.aws_lambda_function.slack-lambda-function.arn
-  endpoint      = aws_lambda_function.default[0].arn
-
-  depends_on    = ["aws_lambda_function.default"]
-
+  #topic_arn = data.aws_sns_topic.health_topic_client.arn
+  #endpoint  = data.aws_lambda_function.slack-lambda-function.arn
+  topic_arn  = aws_sns_topic.default.arn
+  protocol   = "lambda"
+  endpoint   = aws_lambda_function.default[0].arn
+  depends_on = ["aws_lambda_function.default"]
 }

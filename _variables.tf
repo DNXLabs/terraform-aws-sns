@@ -3,7 +3,7 @@
 # }
 
 variable "slack_endpoint" {
-  default = ""
+  default     = ""
   description = "endpoint to Slack notifications chanel"
 }
 
@@ -12,7 +12,7 @@ variable "topic_name" {
 }
 
 variable "account_ids" {
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
   description = "List of accounts to allow publishing to SNS"
 }
