@@ -35,6 +35,7 @@ resource "aws_iam_policy" "default" {
       "Action": [
         "logs:CreateLogStream",
         "logs:PutLogEvents",
+        "logs:CreateLogGroup",
         "cloudwatch:*"
       ],
       "Resource": [
@@ -94,5 +95,5 @@ resource "aws_sns_topic_subscription" "lambda_subscription" {
   topic_arn  = aws_sns_topic.default.arn
   protocol   = "lambda"
   endpoint   = aws_lambda_function.default[0].arn
-  depends_on = ["aws_lambda_function.default"]
+  depends_on = [aws_lambda_function.default]
 }
