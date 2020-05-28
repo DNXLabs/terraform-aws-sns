@@ -7,11 +7,13 @@ AWS SNS Application Module
 
 This module is designed to be used with `DNXLabs/terraform-aws-monitoring`.
 
+<!--- BEGIN_TF_DOCS --->
+<!--- END_TF_DOCS --->
 
 ## Authors
 
-Module managed by [Allan Denot / Renato Tavares].
+Module managed by [DNX Solutions](https://github.com/DNXLabs).
 
 ## License
 
-Apache 2 Licensed. See LICENSE for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/DNXLabs/terraform-aws-sns/blob/master/LICENSE) for full details.
