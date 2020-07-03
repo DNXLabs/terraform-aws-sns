@@ -8,6 +8,7 @@ AWS SNS Application Module
 This module is designed to be used with `DNXLabs/terraform-aws-monitoring`.
 
 <!--- BEGIN_TF_DOCS --->
+
 ## Requirements
 
 | Name | Version |
