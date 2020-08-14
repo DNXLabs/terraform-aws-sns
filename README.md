@@ -3,9 +3,14 @@
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-sns/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-sns/actions)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-sns)](https://github.com/DNXLabs/terraform-aws-sns/blob/master/LICENSE)
 
-AWS SNS Application Module
+This is a module that creates an AWS SNS Application Module and it was designed to be used with `DNXLabs/terraform-aws-monitoring`.
 
-This module is designed to be used with `DNXLabs/terraform-aws-monitoring`.
+The following resources will be created:
+ 
+ - Simple Notification Services (SNS) topic
+ - Provides a Lambda Function resource. Lambda allows you to trigger execution of code in response to events in AWS, enabling serverless backend solutions. 
+ - Gives an external source (like a CloudWatch Event Rule, SNS, or S3) permission to access the Lambda function. In our case is SNS
+ - An SNS topic policy resource
 
 <!--- BEGIN_TF_DOCS --->
 
