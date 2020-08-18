@@ -64,15 +64,15 @@ resource "aws_lambda_function" "default" {
   filename      = "${path.module}/slack.zip"
   function_name = "slack-notification-healthcheck-${var.topic_name}"
   role          = aws_iam_role.default[0].arn
-  handler       = "main"
+  handler       = "index.handler"
 
   source_code_hash = filebase64sha256("${path.module}/slack.zip")
 
-  runtime = "go1.x"
+  runtime = "nodejs12.x"
 
   environment {
     variables = {
-      SLACK_WEBHOOK = var.slack_endpoint
+      UNENCRYPTED_HOOK_URL = var.slack_endpoint
     }
   }
 }
