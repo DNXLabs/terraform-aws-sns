@@ -8,7 +8,7 @@ This is a module that creates an AWS SNS Application Module and it was designed 
 The following resources will be created:
  
  - Simple Notification Services (SNS) topic
- - Provides a Lambda Function resource. Lambda allows you to trigger execution of code in response to events in AWS, enabling serverless backend solutions. 
+ - Provides a Lambda Function resource. Lambda allows you to trigger execution of code in response to events in AWS, enabling serverless backend solutions. The Lambda function details and documentation are available on `DNXLabs/lambda-cloudwatch-slack`.
  - Gives an external source (like a CloudWatch Event Rule, SNS, or S3) permission to access the Lambda function. In our case is SNS
  - An SNS topic policy resource
 
