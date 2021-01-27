@@ -34,6 +34,25 @@ data "aws_iam_policy_document" "sns_all" {
 
     sid = "allow-publish-clients-stmt"
   }
+
+  statement {
+    actions = [
+      "SNS:Publish"
+    ]
+
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    resources = [
+      aws_sns_topic.default.arn,
+    ]
+
+    sid = "allow-publish-event-bridge"
+  }
 }
 
 data "aws_iam_policy_document" "sns" {
@@ -65,5 +84,24 @@ data "aws_iam_policy_document" "sns" {
     ]
 
     sid = "allow-publish-clients-stmt"
+  }
+
+  statement {
+    actions = [
+      "SNS:Publish"
+    ]
+
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    resources = [
+      aws_sns_topic.default.arn,
+    ]
+
+    sid = "allow-publish-event-bridge"
   }
 }
