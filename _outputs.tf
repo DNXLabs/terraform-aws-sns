@@ -1,3 +1,3 @@
 output "aws_sns_topic_arn" {
-  value = aws_sns_topic.default.arn
+  value = try(aws_sns_topic.default[0].arn, "")
 }

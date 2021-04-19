@@ -7,12 +7,18 @@ variable "slack_endpoint" {
   description = "endpoint to Slack notifications chanel"
 }
 
-variable "topic_name" {
-  description = "Topic name"
+variable "sns_topic_name" {
+  description = "Topic name (optional - creates SNS topic)"
+  default     = ""
+}
+
+variable "sns_topic_arn" {
+  description = "SNS Topic to use instead of creating one (optional)"
+  default     = ""
 }
 
 variable "account_ids" {
   type        = list(string)
   default     = []
-  description = "List of accounts to allow publishing to SNS"
+  description = "List of accounts to allow publishing to SNS (optional - only when SNS topic is created)"
 }

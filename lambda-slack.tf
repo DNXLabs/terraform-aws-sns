@@ -49,7 +49,6 @@ resource "aws_iam_policy" "default" {
 EOF
 }
 
-
 resource "aws_iam_role_policy_attachment" "lambda_logs" {
   count = var.slack_endpoint == "" ? 0 : 1
 
@@ -57,12 +56,18 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
   policy_arn = aws_iam_policy.default[0].arn
 }
 
+resource "random_string" "lambda_suffix" {
+  length  = 8
+  special = false
+  lower   = true
+  number  = false
+}
 
 resource "aws_lambda_function" "default" {
   count = var.slack_endpoint == "" ? 0 : 1
 
   filename      = "${path.module}/slack.zip"
-  function_name = "slack-notification-healthcheck-${var.topic_name}"
+  function_name = "slack-cloudwatch-notification-${random_string.lambda_suffix.result}"
   role          = aws_iam_role.default[0].arn
   handler       = "index.handler"
 
@@ -84,7 +89,7 @@ resource "aws_lambda_permission" "with_sns" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.default[0].function_name
   principal     = "sns.amazonaws.com"
-  source_arn    = aws_sns_topic.default.arn
+  source_arn    = var.sns_topic_arn != "" ? var.sns_topic_arn : aws_sns_topic.default[0].arn
 }
 
 resource "aws_sns_topic_subscription" "lambda_subscription" {
@@ -92,7 +97,7 @@ resource "aws_sns_topic_subscription" "lambda_subscription" {
 
   #topic_arn = data.aws_sns_topic.health_topic_client.arn
   #endpoint  = data.aws_lambda_function.slack-lambda-function.arn
-  topic_arn  = aws_sns_topic.default.arn
+  topic_arn  = var.sns_topic_arn != "" ? var.sns_topic_arn : aws_sns_topic.default[0].arn
   protocol   = "lambda"
   endpoint   = aws_lambda_function.default[0].arn
   depends_on = [aws_lambda_function.default]
