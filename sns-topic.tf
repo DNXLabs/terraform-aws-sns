@@ -1,7 +1,7 @@
 resource "aws_sns_topic" "default" {
-  count = var.sns_topic_name != "" ? 1 : 0
-  name  = var.sns_topic_name
-
+  count             = var.sns_topic_name != "" ? 1 : 0
+  name              = var.sns_topic_name
+  kms_master_key_id = var.sns_kms_encryption ? aws_kms_key.sns[0].id : null # default key does not allow cloudwatch alarms to publish
   # provisioner "local-exec" {
   #   command = "aws sns subscribe --topic-arn ${self.arn} --region ${data.aws_region.current.name} --protocol email --notification-endpoint ${var.sns_subscribe_list}"
   # }
