@@ -32,7 +32,9 @@ The following resources will be created:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | account\_ids | List of accounts to allow publishing to SNS (optional - only when SNS topic is created) | `list(string)` | `[]` | no |
-| slack\_endpoint | endpoint to Slack notifications chanel | `string` | `""` | no |
+| email | Email address to subscribe notification to (optional) | `string` | `""` | no |
+| slack\_endpoint | endpoint to Slack notifications channel (optional) | `string` | `""` | no |
+| sns\_kms\_encryption | Enabled KMS CMK encryption at rest for SNS Topic | `bool` | `false` | no |
 | sns\_topic\_arn | SNS Topic to use instead of creating one (optional) | `string` | `""` | no |
 | sns\_topic\_name | Topic name (optional - creates SNS topic) | `string` | `""` | no |
 
