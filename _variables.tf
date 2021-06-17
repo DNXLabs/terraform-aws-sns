@@ -8,7 +8,7 @@ variable "slack_endpoint" {
 }
 
 variable "email" {
-  default = ""
+  default     = ""
   description = "Email address to subscribe notification to (optional)"
 }
 

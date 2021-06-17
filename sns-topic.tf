@@ -30,17 +30,17 @@ data "aws_iam_policy_document" "sns" {
       identifiers = ["*"]
     }
     resources = [aws_sns_topic.default[0].arn]
-    sid = "allow-publish-clients-stmt"
+    sid       = "allow-publish-clients-stmt"
   }
 
   statement {
     actions = ["SNS:Publish"]
-    effect = "Allow"
+    effect  = "Allow"
     principals {
       type        = "Service"
       identifiers = ["events.amazonaws.com"]
     }
     resources = [aws_sns_topic.default[0].arn]
-    sid = "allow-publish-event-bridge"
+    sid       = "allow-publish-event-bridge"
   }
 }
