@@ -67,7 +67,7 @@ resource "aws_lambda_function" "default" {
   count = var.slack_endpoint == "" ? 0 : 1
 
   filename      = "${path.module}/slack.zip"
-  function_name = "slack-cloudwatch-notification-${random_string.lambda_suffix.result}"
+  function_name = "slack-cloudwatch-notification-${var.sns_topic_name != "" ? var.sns_topic_name : random_string.lambda_suffix.result}"
   role          = aws_iam_role.default[0].arn
   handler       = "index.handler"
 
