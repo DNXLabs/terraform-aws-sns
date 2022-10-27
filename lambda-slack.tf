@@ -60,7 +60,7 @@ resource "random_string" "lambda_suffix" {
   length  = 8
   special = false
   lower   = true
-  number  = false
+  numeric  = false
 }
 
 resource "aws_lambda_function" "default" {
