@@ -63,6 +63,5 @@ jobs:
           TF_VAR_workers_ami_id: 'ami-123456'
           TF_VAR_cluster_name: 'test_cluster'
         run: |
-          sed -i -e 's/>=/=/' -e 's/ \(\d\+\.\d\+\)"/ \1.0"/' versions.tf
           terraform init
           terraform validate
