@@ -43,4 +43,23 @@ data "aws_iam_policy_document" "sns" {
     resources = [aws_sns_topic.default[0].arn]
     sid       = "allow-publish-event-bridge"
   }
+
+  statement {
+    actions = [
+      "SNS:ListSubscriptionsByTopic"
+    ]
+
+    effect = "Allow"
+
+    principals {
+      type        = "AWS"
+      identifiers = var.list_subscription_roles
+    }
+
+    resources = [
+      aws_sns_topic.default.arn,
+    ]
+
+    sid = "allow-drata-to-monitor"
+  }
 }

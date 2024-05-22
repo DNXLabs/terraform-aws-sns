@@ -33,3 +33,9 @@ variable "sns_kms_encryption" {
   default     = false
   description = "Enabled KMS CMK encryption at rest for SNS Topic"
 }
+
+variable "list_subscription_roles" {
+  type = list(string)
+  default = []
+  description = "Roles to allow SNS:ListSubscriptionsByTopic"
+}
