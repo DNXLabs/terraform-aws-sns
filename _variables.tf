@@ -33,3 +33,9 @@ variable "sns_kms_encryption" {
   default     = false
   description = "Enabled KMS CMK encryption at rest for SNS Topic"
 }
+
+variable "lambda_runtime" {
+  type = string
+  default = "nodejs20.x"
+  description = "Runtime for the lamdba slack function"
+}
