@@ -33,6 +33,7 @@ The following resources will be created:
 |------|-------------|------|---------|:--------:|
 | account\_ids | List of accounts to allow publishing to SNS (optional - only when SNS topic is created) | `list(string)` | `[]` | no |
 | email | Email address to subscribe notification to (optional) | `string` | `""` | no |
+| lambda\_runtime | Runtime for the lamdba slack function | `string` | `"nodejs20.x"` | no |
 | slack\_endpoint | endpoint to Slack notifications channel (optional) | `string` | `""` | no |
 | sns\_kms\_encryption | Enabled KMS CMK encryption at rest for SNS Topic | `bool` | `false` | no |
 | sns\_topic\_arn | SNS Topic to use instead of creating one (optional) | `string` | `""` | no |
