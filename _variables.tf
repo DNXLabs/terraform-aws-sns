@@ -35,7 +35,7 @@ variable "sns_kms_encryption" {
 }
 
 variable "lambda_runtime" {
-  type = string
-  default = "nodejs20.x"
+  type        = string
+  default     = "nodejs20.x"
   description = "Runtime for the lamdba slack function"
 }
